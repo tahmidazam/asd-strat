@@ -5,10 +5,13 @@ description = "The Stratification of Autism Spectrum Disorder Using Multimodal, 
 requires-python = ">=3.13"
 dependencies = [
     "black>=25.1.0",
+    "matplotlib>=3.10.3",
+    "myst-parser>=4.0.1",
     "pandas>=2.3.1",
     "pyarrow>=20.0.0",
     "scikit-learn>=1.7.0",
     "sphinx>=8.2.3",
     "sphinx-autobuild>=2024.10.3",
+    "tqdm>=4.67.1",
     "typer>=0.16.0",
 ]
