@@ -1,0 +1,9 @@
+# Regression
+
+Many instruments in SPARK are behavioural questionnaires that have a set of question features and a single score
+feature. We investigate whether the score feature of one instrument can be predicted from the question features of
+another instrument.
+
+The instruments under analysis include:
+
+- `Inst.BMS`
