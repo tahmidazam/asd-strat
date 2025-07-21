@@ -6,19 +6,19 @@ A command to run supervised regression analysis on the SPARK dataset.
 Introduction
 ------------
 
-Many instruments in SPARK are behavioural questionnaires that have a set of question features and a single score
-feature. We investigate whether the score feature of one instrument can be predicted from the question features of
-another instrument.
+Many instruments in SPARK are behavioural questionnaires that have a set of question features and a single score feature.
+We investigate whether the score feature of one instrument can be predicted from the question features of another instrument.
+Strong predictability would suggest common latent traits, while poor predictability would indicate instrument-specific variance and provide evidence for ASD heterogeneity.
 
 Methods
 -------
 
 The instruments under analysis include:
 
-- Repetitive Behavior Scale - Revised (RBS-R)
-- Developmental Coordination Disorder Questionnaire (DCDQ)
-- Child Behavior Checklist for ages 6 to 18 years (CBCL/6-18)
-- Social Communication Questionnaire (SCQ)
+- Repetitive Behavior Scale - Revised (:attr:`~spark.inst.Inst.RBSR`)
+- Developmental Coordination Disorder Questionnaire (:attr:`~spark.inst.Inst.DCDQ`)
+- Child Behavior Checklist for ages 6 to 18 years (:attr:`~spark.inst.CBCL_6_18`)
+- Social Communication Questionnaire (:attr:`~spark.inst.Inst.SCQ`)
 
 The inclusion criteria for these instruments include:
 
@@ -33,20 +33,23 @@ The regression implementations used include:
 - `Histogram-based gradient boosting regression tree <https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor>`_
 - `Random forest regression tree <https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor>`_
 
-The sample size for each regression is determined by the number of subjects that have both the question features and the score feature available. The number of subjects used in each regression is shown below:
+The sample size for each regression is determined by the number of subjects that have both the question features and the score feature available.
+The number of subjects used in each regression is shown below:
 
-.. figure:: _static/images/subject_counts.png
+.. figure:: /_static/images/subject_counts.png
 
-   A heatmap showing the number of subjects used in each regression. The x-axis corresponds to the instrument providing question features and the y-axis corresponds to the instrument whose score feature is being predicted.
+   A heatmap showing the number of subjects used in each regression.
+   The x-axis corresponds to the instrument providing question features and the y-axis corresponds to the instrument whose score feature is being predicted.
 
-5-fold `cross-validation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html>`_ is used to evaluate :math:`R^2` values. 95% confidence intervals are calculated using the t-distribution
+K-fold `cross-validation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html>`_ with :math:`k = 5` is used to evaluate :math:`R^2` values.
+95% confidence intervals are calculated using the `Student's t-distribution <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html>`_ with degrees of freedom equal to :math:`k - 1 = 4`.
 
 Results
 -------
 
 The results are plotted below:
 
-.. figure:: _static/images/regression_results.png
+.. figure:: /_static/images/regression_results.png
 
    A grid of heatmaps showing regression performance. Each heatmap displays the mean :math:`R^2` values for a specific model, where the x-axis corresponds to the instrument providing question features and the y-axis corresponds to the instrument whose score feature is being predicted.
 
@@ -58,7 +61,7 @@ The largest mean :math:`R^2` values are observed when:
 Discussion
 ----------
 
-The regression results indicate that instrument questions struggle to predict scores of other instruments. Non-linear regression models do not perform better than linear regression models. The low mean :math:`R^2` values supports the view that ASD is a heterogeneous condition.
+The regression results indicate that instrument questions struggle to predict scores of other instruments. Non-linear regression models do not perform better than linear regression models. The low mean :math:`R^2` values supports the view that ASD is a heterogeneous condition, which motivates our unsupervised analysis.
 
 
 Module contents

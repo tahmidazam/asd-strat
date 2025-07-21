@@ -115,8 +115,7 @@ def plot_subject_counts(
     Plots a heatmap of subject counts for each combination of instruments.
 
     :param instruments: A list of instruments used in the analysis.
-    :param subject_counts: A 2-dimensional array where each cell represents the number of subjects for the corresponding
-    instrument pair.
+    :param subject_counts: A 2-dimensional array where each cell represents the number of subjects for the corresponding instrument pair.
     :return:
     """
     # Calculate the number of instruments:
@@ -183,8 +182,8 @@ def plot_regression_results(
 
     :param instruments: The instruments under analysis.
     :param r2_mean: A dictionary of :math:`R^2` matrices keyed by a model.
-    :param r2_ci_lower: A dictionary of confidence interval lower bound matrices keyed by a model.
-    :param r2_ci_upper: A dictionary of confidence interval upper bound matrices keyed by a model.
+    :param r2_ci_lower: A dictionary of :math:`R^2` confidence interval lower bound matrices keyed by a model.
+    :param r2_ci_upper: A dictionary of :math:`R^2` confidence interval upper bound matrices keyed by a model.
     :param models: The models used for analysis.
     :param nrows: The number of rows in the heatmap grid.
     :param ncols: The number of columns in the heatmap grid.
@@ -261,15 +260,13 @@ def run_regression(
     dict[str, np.ndarray], dict[str, np.ndarray], dict[str, np.ndarray], np.ndarray
 ]:
     """
-    Executed regression analysis for each combination of instruments and models provided, evaluating the
-    cross-validation mean :math:`R^2`, confidence interval lower and upper bounds, and subject counts.
+    Executed regression analysis for each combination of instruments and models provided, evaluating the cross-validation mean :math:`R^2`, confidence interval lower and upper bounds, and subject counts.
 
     :param kf: A K-Fold cross-validator.
     :param spark_pathname: The SPARK data release pathname.
     :param models: A dictionary of models keyed by their name.
     :param instruments: A list of instruments to carry out regression on.
-    :return: A dictionary of :math:`R^2` matrices keyed by model, a dictionary of confidence interval lower bounds keyed
-    by model, a dictionary of confidence interval upper bounds keyed by model, and a matrix of subject counts.
+    :return: A dictionary of :math:`R^2` matrices keyed by model, a dictionary of confidence interval lower bounds keyed by model, a dictionary of confidence interval upper bounds keyed by model, and a matrix of subject counts.
     """
 
     # Initialise the dataset with the appropriate instruments:

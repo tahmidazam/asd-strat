@@ -13,6 +13,7 @@ class Feat(Enum):
     def inst_code(self) -> str:
         """
         The instrument code for the feature.
+
         :return: The instrument code.
         """
         return self.value[0]
@@ -21,6 +22,7 @@ class Feat(Enum):
     def source_col(self) -> str:
         """
         The source column name for the feature.
+
         :return: The source column name.
         """
         return self.value[1]
@@ -31,6 +33,7 @@ class Feat(Enum):
         The column name for the feature.
 
         A combination of the instrument code and source column, separated by an underscore.
+
         :return: The column name.
         """
         return f"{self.inst_code}_{self.source_col}"

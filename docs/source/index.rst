@@ -3,14 +3,7 @@ The Stratification of Autism Spectrum Disorder Using Multimodal, Semi-supervised
 
 
 .. toctree::
-   :caption: Packages
-   :maxdepth: 2
+   :maxdepth: 3
 
-   spark
-
-
-.. toctree::
-   :caption: Laboratory notes
-   :maxdepth: 2
-
-   regression
+   packages
+   lab_notes

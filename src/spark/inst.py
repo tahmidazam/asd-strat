@@ -104,6 +104,22 @@ class Inst(Enum):
             for inst in inst_iter
         }
 
+    @staticmethod
+    def from_code(inst_code: str) -> "Inst":
+        """
+        Retrieves an instrument by its code.
+
+        :param inst_code: The code of the instrument to retrieve.
+        :return: The corresponding Inst enum member.
+        :raises ValueError: If the inst_code does not match any Inst member.
+        """
+        for inst in Inst:
+            if inst.code == inst_code.upper():
+                return inst
+
+        raise ValueError(f"Invalid instrument code: {inst_code}")
+
+    #: Developmental Coordination Disorder Questionnaire (DCDQ)
     DCDQ = (
         "dcdq",
         "dcdq",
@@ -132,6 +148,7 @@ class Inst(Enum):
         Feat.DCDQ_FINAL_SCORE,
     )
 
+    #: Repetitive Behavior Scale - Revised (RBS-R)
     RBSR = (
         "rbsr",
         "rbsr",
@@ -191,6 +208,7 @@ class Inst(Enum):
         Feat.RBSR_TOTAL_FINAL_SCORE,
     )
 
+    #: Social Communication Questionnaire (SCQ)
     SCQ = (
         "scq",
         "scq",
@@ -240,6 +258,7 @@ class Inst(Enum):
         Feat.SCQ_FINAL_SCORE,
     )
 
+    #: Child Behavior Checklist for ages 6 to 18 years (CBCL/6-18)
     CBCL_6_18 = (
         "cbcl_6_18",
         "cbcl_6_18",
@@ -388,6 +407,7 @@ class Inst(Enum):
         Feat.CBCL_6_18_TOTAL_PROBLEMS_T_SCORE,
     )
 
+    #: Child Behavior Checklist for ages 1.5 to 5 years (CBCL/1-5)
     CBCL_1_5 = (
         "cbcl_1_5",
         "cbcl_1_5",
@@ -512,29 +532,80 @@ class Inst(Enum):
         Feat.CBCL_1_5_TOTAL_PROBLEMS_T_SCORE,
     )
 
+    #: Basic Medical Screening Questionnaire
     BMS = ("bms", "basic_medical_screening", None, None, None)
+
+    #: Approximated-cognitive impairment
     ACI = ("aci", "approximated_cognitive_impairment", None, None, None)
+
+    #: Area Deprivation Index (ADI)
     ADI = ("adi", "area_deprivation_index", None, None, None)
+
+    #: Adult Self-Report (ASR)
     ASR = ("asr", "asr", None, None, None)
+
+    #: Background History Questionnaire - Adult (BHA)
     BHA = ("bha", "background_history_adult", None, None, None)
+
+    #: Background History Questionnaire - Child (BHC)
     BHC = ("bhc", "background_history_child", None, None, None)
+
+    #: Background History Questionnaire - Sibling (BHS)
     BHS = ("bhs", "background_history_sibling", None, None, None)
+
+    #: Clinical Lab Results (CLR)
     CLR = ("clr", "clinical_lab_results", None, None, None)
+
+    #: Core Descriptive Variables (CDV)
     CDV = ("cdv", "core_descriptive_variables", None, None, None)
+
+    #: Individuals Registration (IR)
     IR = ("ir", "individuals_registration", None, None, None)
+
+    #: Intellectual Quotient data (IQ)
     IQ = ("iq", "iq", None, None, None)
+
+    #: Roles
     ROLES = ("roles", "roles", None, None, None)
+
+    #: Self-Reported Genetic Diagnosis (SRGD)
     SRGD = ("srgd", "self_reported_genetic_diagnosis", None, None, None)
+
+    #: Social Responsiveness Scale - 2; Adult Self-Report (SRS-2)
     SRS_2_ASR = ("srs_2_asr", "srs-2_adult_self_report", None, None, None)
+
+    #: Social Responsiveness Scale - 2; Adult Self-Report (SRS-2)
     SRS_2_DA = ("srs_2_DA", "srs2_dependent_adult", None, None, None)
+
+    #: Social Responsiveness Scale - 2; Adult Self-Report (SRS-2)
     SRS_2_SA = ("srs_2_sa", "srs2_school_age", None, None, None)
+
+    #: Vineland Adaptive Behavior Scales - 3rd Edition (Vineland-3)
     V3 = ("v3", "vineland-3", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule original version (ADOS) module 1
     ADOS_O_1 = ("ados_o_1", "ados/ados_original_module_1", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule original version (ADOS) module 2
     ADOS_O_2 = ("ados_o_2", "ados/ados_original_module_2", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule original version (ADOS) module 3
     ADOS_O_3 = ("ados_o_3", "ados/ados_original_module_3", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule original version (ADOS) module 4
     ADOS_O_4 = ("ados_o_4", "ados/ados_original_module_4", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule version 2 (ADOS-2) module T
     ADOS_2_T = ("ados_2_t", "ados/ados_2_toddler", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule version 2 (ADOS-2) module 1
     ADOS_2_1 = ("ados_2_1", "ados/ados_2_module_1", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule version 2 (ADOS-2) module 2
     ADOS_2_2 = ("ados_2_2", "ados/ados_2_module_2", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule version 2 (ADOS-2) module 3
     ADOS_2_3 = ("ados_2_3", "ados/ados_2_module_3", None, None, None)
+
+    #: Autism Diagnostic Observation Schedule version 2 (ADOS-2) module 4
     ADOS_2_4 = ("ados_2_4", "ados/ados_2_module_4", None, None, None)

@@ -3,6 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path("..", "..", "src").resolve()))
 
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -36,10 +37,5 @@ source_suffix = {
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "alabaster"
+html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
-html_theme_options = {
-    "caption_font_family": "system-ui",
-    "font_family": "system-ui",
-    "head_font_family": "system-ui",
-}
