@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Regression &#8212; asd_strat 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_notes/regression';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cluster analysis" href="cluster_analysis.html" />
+    <link rel="prev" title="Laboratory notes" href="../lab_notes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">asd_strat 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../packages.html">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../lab_notes.html">
+    Laboratory notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../packages.html">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../lab_notes.html">
+    Laboratory notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="cluster_analysis.html">Cluster analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="cluster_analysis/initial_pheno.html">Initial phenotypic cluster analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster_analysis/paper_reproduction.html">Paper reproduction</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../lab_notes.html" class="nav-link">Laboratory notes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Regression</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="regression">
+<h1>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h1>
+<p>A command to run supervised regression analysis on the SPARK dataset.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Many instruments in SPARK are behavioural questionnaires that have a set of question features and a single score feature.
+We investigate whether the score feature of one instrument can be predicted from the question features of another instrument.
+Strong predictability would suggest common latent traits, while poor predictability would indicate instrument-specific variance and provide evidence for ASD heterogeneity.</p>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
+<p>The instruments under analysis include:</p>
+<ul class="simple">
+<li><p>Repetitive Behavior Scale - Revised (<a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst.RBSR" title="spark.inst.Inst.RBSR"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RBSR</span></code></a>)</p></li>
+<li><p>Developmental Coordination Disorder Questionnaire (<a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst.DCDQ" title="spark.inst.Inst.DCDQ"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DCDQ</span></code></a>)</p></li>
+<li><p>Child Behavior Checklist for ages 6 to 18 years (<code class="xref py py-attr docutils literal notranslate"><span class="pre">CBCL_6_18</span></code>)</p></li>
+<li><p>Social Communication Questionnaire (<a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst.SCQ" title="spark.inst.Inst.SCQ"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SCQ</span></code></a>)</p></li>
+</ul>
+<p>The inclusion criteria for these instruments include:</p>
+<ul class="simple">
+<li><p>Each instrument must have a 1 score feature used as the target for regression.</p></li>
+<li><p>Each instrument must have a n question features used as the input for regression.</p></li>
+</ul>
+<p>The regression implementations used include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">Linear regression</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">Lasso regression</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">Ridge regression</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor">Histogram-based gradient boosting regression tree</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor">Random forest regression tree</a></p></li>
+</ul>
+<p>The sample size for each regression is determined by the number of subjects that have both the question features and the score feature available.
+The number of subjects used in each regression is shown below:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/subject_counts.png" src="../_images/subject_counts.png" />
+<figcaption>
+<p><span class="caption-text">A heatmap showing the number of subjects used in each regression.
+The x-axis corresponds to the instrument providing question features and the y-axis corresponds to the instrument whose score feature is being predicted.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>K-fold <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">cross-validation</a> with <span class="math notranslate nohighlight">\(k = 5\)</span> is used to evaluate <span class="math notranslate nohighlight">\(R^2\)</span> values.
+95% confidence intervals are calculated using the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html">Student’s t-distribution</a> with degrees of freedom equal to <span class="math notranslate nohighlight">\(k - 1 = 4\)</span>.</p>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<p>The results are plotted below:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/regression_results.png" src="../_images/regression_results.png" />
+<figcaption>
+<p><span class="caption-text">A grid of heatmaps showing regression performance. Each heatmap displays the mean <span class="math notranslate nohighlight">\(R^2\)</span> values for a specific model, where the x-axis corresponds to the instrument providing question features and the y-axis corresponds to the instrument whose score feature is being predicted.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The largest mean <span class="math notranslate nohighlight">\(R^2\)</span> values are observed when:</p>
+<ul class="simple">
+<li><p>predicting the SCQ final score using the questions from RBS-R (<span class="math notranslate nohighlight">\(R^2=0.39\)</span>, 95% CI [0.38, 0.40] using histogram-based gradient boosting regression tree); and</p></li>
+<li><p>predicting the CBCL/6-18 final score using the questions from RBS-R (<span class="math notranslate nohighlight">\(R^2=0.34\)</span>, 95% CI [0.33, 0.35] using linear regression).</p></li>
+</ul>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
+<p>The regression results indicate that instrument questions struggle to predict scores of other instruments. Non-linear regression models do not perform better than linear regression models. The low mean <span class="math notranslate nohighlight">\(R^2\)</span> values supports the view that ASD is a heterogeneous condition, which motivates our unsupervised analysis.</p>
+</section>
+<section id="module-asd_strat.commands.regression">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-asd_strat.commands.regression" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="asd_strat.commands.regression.plot_regression_results">
+<span class="sig-prename descclassname"><span class="pre">asd_strat.commands.regression.</span></span><span class="sig-name descname"><span class="pre">plot_regression_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instruments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst" title="spark.inst.Inst"><span class="pre">Inst</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r2_mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r2_ci_lower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r2_ci_upper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(6,</span> <span class="pre">20)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="headerlink" href="#asd_strat.commands.regression.plot_regression_results" title="Link to this definition">#</a></dt>
+<dd><p>Plots a grid of heatmaps. Each heatmap plots the regression results for a model. Each cell is coloured based on the
+mean <span class="math notranslate nohighlight">\(R^2\)</span> achieved by the model when tasked with using the x-axis instrument’s question features to predict
+the y-axis instrument’s score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instruments</strong> – The instruments under analysis.</p></li>
+<li><p><strong>r2_mean</strong> – A dictionary of <span class="math notranslate nohighlight">\(R^2\)</span> matrices keyed by a model.</p></li>
+<li><p><strong>r2_ci_lower</strong> – A dictionary of <span class="math notranslate nohighlight">\(R^2\)</span> confidence interval lower bound matrices keyed by a model.</p></li>
+<li><p><strong>r2_ci_upper</strong> – A dictionary of <span class="math notranslate nohighlight">\(R^2\)</span> confidence interval upper bound matrices keyed by a model.</p></li>
+<li><p><strong>models</strong> – The models used for analysis.</p></li>
+<li><p><strong>nrows</strong> – The number of rows in the heatmap grid.</p></li>
+<li><p><strong>ncols</strong> – The number of columns in the heatmap grid.</p></li>
+<li><p><strong>figsize</strong> – The size of the figure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The plotted figure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="asd_strat.commands.regression.plot_subject_counts">
+<span class="sig-prename descclassname"><span class="pre">asd_strat.commands.regression.</span></span><span class="sig-name descname"><span class="pre">plot_subject_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instruments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst" title="spark.inst.Inst"><span class="pre">Inst</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="headerlink" href="#asd_strat.commands.regression.plot_subject_counts" title="Link to this definition">#</a></dt>
+<dd><p>Plots a heatmap of subject counts for each combination of instruments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instruments</strong> – A list of instruments used in the analysis.</p></li>
+<li><p><strong>subject_counts</strong> – A 2-dimensional array where each cell represents the number of subjects for the corresponding instrument pair.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="asd_strat.commands.regression.regression">
+<span class="sig-prename descclassname"><span class="pre">asd_strat.commands.regression.</span></span><span class="sig-name descname"><span class="pre">regression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark_pathname:</span> <span class="pre">~typing.Annotated[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;typer.models.ArgumentInfo</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f26fb8c3890&gt;]</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_pathname:</span> <span class="pre">~typing.Annotated[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;typer.models.ArgumentInfo</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f26fb8c39d0&gt;]</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_pathname:</span> <span class="pre">~typing.Annotated[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;typer.models.ArgumentInfo</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f26fb8c3b10&gt;]</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#asd_strat.commands.regression.regression" title="Link to this definition">#</a></dt>
+<dd><p>Perform regression analysis using multiple models on specified instruments.</p>
+<p>Saves the plot of regression results to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark_pathname</strong> – The SPARK data release directory pathname.</p></li>
+<li><p><strong>cache_pathname</strong> – The cache pathname.</p></li>
+<li><p><strong>output_pathname</strong> – The output pathname.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="asd_strat.commands.regression.run_regression">
+<span class="sig-prename descclassname"><span class="pre">asd_strat.commands.regression.</span></span><span class="sig-name descname"><span class="pre">run_regression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark_pathname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instruments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../packages/spark/instrument.html#spark.inst.Inst" title="spark.inst.Inst"><span class="pre">Inst</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">KFold(n_splits=5,</span> <span class="pre">random_state=None,</span> <span class="pre">shuffle=True)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#asd_strat.commands.regression.run_regression" title="Link to this definition">#</a></dt>
+<dd><p>Executed regression analysis for each combination of instruments and models provided, evaluating the cross-validation mean <span class="math notranslate nohighlight">\(R^2\)</span>, confidence interval lower and upper bounds, and subject counts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kf</strong> – A K-Fold cross-validator.</p></li>
+<li><p><strong>spark_pathname</strong> – The SPARK data release pathname.</p></li>
+<li><p><strong>models</strong> – A dictionary of models keyed by their name.</p></li>
+<li><p><strong>instruments</strong> – A list of instruments to carry out regression on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of <span class="math notranslate nohighlight">\(R^2\)</span> matrices keyed by model, a dictionary of confidence interval lower bounds keyed by model, a dictionary of confidence interval upper bounds keyed by model, and a matrix of subject counts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lab_notes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Laboratory notes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cluster_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cluster analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-asd_strat.commands.regression">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asd_strat.commands.regression.plot_regression_results"><code class="docutils literal notranslate"><span class="pre">plot_regression_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asd_strat.commands.regression.plot_subject_counts"><code class="docutils literal notranslate"><span class="pre">plot_subject_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asd_strat.commands.regression.regression"><code class="docutils literal notranslate"><span class="pre">regression()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asd_strat.commands.regression.run_regression"><code class="docutils literal notranslate"><span class="pre">run_regression()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/lab_notes/regression.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tahmid Azam.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
