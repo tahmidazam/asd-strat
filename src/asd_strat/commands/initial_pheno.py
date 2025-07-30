@@ -50,7 +50,7 @@ def initial_pheno(
     :param cache_pathname: The cache directory pathname.
     :param output_pathname: The output directory pathname where plots will be saved.
     """
-    cache_path = Path(cache_pathname) / "phenotypic"
+    cache_path = Path(cache_pathname) / "initial_pheno"
     cache_path.mkdir(parents=True, exist_ok=True)
     output_path = Path(output_pathname)
 
@@ -270,7 +270,7 @@ def plot_metrics_against_k(
     nrows = int(np.ceil(num_metrics / ncols))
 
     fig, axes = plt.subplots(
-        nrows, ncols, figsize=(3 * ncols, 3 * nrows), squeeze=False
+        nrows, ncols, figsize=(6 * ncols, 6 * nrows), squeeze=False
     )
     axes_flat = axes.flatten()
 
@@ -291,6 +291,6 @@ def plot_metrics_against_k(
     for ax in axes_flat[len(metric_keys) :]:
         fig.delaxes(ax)
 
-    fig.suptitle(title, wrap=True)
+    # fig.suptitle(title, wrap=True)
     plt.tight_layout()
     return fig

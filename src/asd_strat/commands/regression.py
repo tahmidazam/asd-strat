@@ -5,7 +5,6 @@ import numpy as np
 import typer
 from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
-from scipy.stats import stats, t
 from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.model_selection import KFold, cross_validate
@@ -171,9 +170,9 @@ def plot_regression_results(
     r2_ci_lower: dict[str, np.ndarray],
     r2_ci_upper: dict[str, np.ndarray],
     models: dict[str, Any],
-    nrows: int = 3,
-    ncols: int = 2,
-    figsize: tuple[int, int] = (10, 16),
+    nrows: int = 5,
+    ncols: int = 1,
+    figsize: tuple[int, int] = (6, 20),
 ) -> Figure:
     """
     Plots a grid of heatmaps. Each heatmap plots the regression results for a model. Each cell is coloured based on the
@@ -190,14 +189,21 @@ def plot_regression_results(
     :param figsize: The size of the figure.
     :return: The plotted figure.
     """
+
     # Calculate the number of instruments:
     n = len(instruments)
 
     # Precalculate labels from instrument codes:
-    index = [inst.code for inst in instruments]
+    label_dict = {
+        "CBCL_6_18": "CBCL/6–18",
+    }
+    index = [
+        label_dict[inst.code] if inst.code in label_dict.keys() else inst.code
+        for inst in instruments
+    ]
 
     # Initialise the figure:
-    fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
+    fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize, sharex=True)
 
     # Ensure axes is an array of axes:
     if len(models) == 1:
@@ -224,27 +230,27 @@ def plot_regression_results(
         ax.set_ylabel("Score")
 
         # Add text for each cell:
-        for x, col_x in enumerate(index):
-            for y, col_y in enumerate(index):
-                if x == y:
-                    continue
-                r2_mean_value = r2_mean_matrix[x][y]
-                r2_ci_lower_value = r2_ci_lower_matrix[x][y]
-                r2_ci_upper_value = r2_ci_upper_matrix[x][y]
-                ax.text(
-                    y,
-                    x,
-                    f"{r2_mean_value:.2f}\n[{r2_ci_lower_value:.2f}, {r2_ci_upper_value:.2f}]",
-                    ha="center",
-                    va="center",
-                )
+        # for x, col_x in enumerate(index):
+        #     for y, col_y in enumerate(index):
+        #         if x == y:
+        #             continue
+        #         r2_mean_value = r2_mean_matrix[x][y]
+        #         r2_ci_lower_value = r2_ci_lower_matrix[x][y]
+        #         r2_ci_upper_value = r2_ci_upper_matrix[x][y]
+        #         ax.text(
+        #             y,
+        #             x,
+        #             f"{r2_mean_value:.2f}\n[{r2_ci_lower_value:.2f}, {r2_ci_upper_value:.2f}]",
+        #             ha="center",
+        #             va="center",
+        #         )
 
     # Remove any extra axes:
     for ax in axes[n + 1 :]:
         fig.delaxes(ax)
 
     # Add a title to the whole figure:
-    fig.suptitle("$R^2$ mean and 95% confidence interval below")
+    # fig.suptitle("$R^2$ mean and 95% confidence interval below")
 
     plt.tight_layout()
 
@@ -355,14 +361,19 @@ def run_regression(
                     # Extract the scores and calculate the confidence intervals:
                     test_scores = cv_results["test_score"]
                     mean = np.mean(test_scores)
-                    sem = stats.sem(test_scores)
-                    confidence = 0.95
-                    ci = t.interval(
-                        confidence, df=len(test_scores) - 1, loc=mean, scale=sem
-                    )
+                    n_bootstrap = 1000
+                    rng = np.random.default_rng()
+                    boot_means = [
+                        np.mean(
+                            rng.choice(test_scores, size=len(test_scores), replace=True)
+                        )
+                        for _ in range(n_bootstrap)
+                    ]
+                    ci_lower = np.percentile(boot_means, 2.5)
+                    ci_upper = np.percentile(boot_means, 97.5)
 
-                    r2_ci_lower[model_key][x_index, y_index] = ci[0]
-                    r2_ci_upper[model_key][x_index, y_index] = ci[1]
+                    r2_ci_lower[model_key][x_index, y_index] = ci_lower
+                    r2_ci_upper[model_key][x_index, y_index] = ci_upper
                     regression_results[model_key][x_index, y_index] = mean
 
                     # Update the progress bar:

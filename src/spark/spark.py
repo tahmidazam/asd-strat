@@ -38,7 +38,9 @@ class SPARK:
         """
         self.instruments = Inst.get(spark_pathname, instruments)
 
-    def join(self, features: list[Feat], how: MergeHow = "outer") -> pd.DataFrame:
+    def join(
+        self, features: list[Feat], how: MergeHow = "outer", rename: bool = True
+    ) -> pd.DataFrame:
         """
         Joins the specified features from the SPARK dataset into a single dataframe.
 
@@ -58,9 +60,11 @@ class SPARK:
             cols_to_keep = [feat.source_col for feat in group] + [PRIMARY_KEY]
             inst_df = inst_df[cols_to_keep].set_index(PRIMARY_KEY)
 
-            inst_df = inst_df.rename(
-                columns={feat.source_col: feat.col for feat in group}
-            )
+            if rename:
+                inst_df = inst_df.rename(
+                    columns={feat.source_col: feat.col for feat in group}
+                )
+
             dfs.append(inst_df)
 
         df = dfs[0].join(dfs[1:], how=how)

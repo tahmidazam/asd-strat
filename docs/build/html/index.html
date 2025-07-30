@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Stratification of Autism Spectrum Disorder Using Multimodal, Semi-supervised Cluster Analysis of the SPARK Cohort &#8212; asd_strat 0.1.0 documentation</title>
+    <title>The Stratification of Autism Spectrum Disorder Using Multimodal, Unsupervised Cluster Analysis of the SPARK Cohort &#8212; asd_strat 0.1.0 documentation</title>
   
   
   
@@ -41,6 +41,7 @@
     <script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -274,8 +275,26 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="the-stratification-of-autism-spectrum-disorder-using-multimodal-semi-supervised-cluster-analysis-of-the-spark-cohort">
-<h1>The Stratification of Autism Spectrum Disorder Using Multimodal, Semi-supervised Cluster Analysis of the SPARK Cohort<a class="headerlink" href="#the-stratification-of-autism-spectrum-disorder-using-multimodal-semi-supervised-cluster-analysis-of-the-spark-cohort" title="Link to this heading">#</a></h1>
+  <section id="the-stratification-of-autism-spectrum-disorder-using-multimodal-unsupervised-cluster-analysis-of-the-spark-cohort">
+<h1>The Stratification of Autism Spectrum Disorder Using Multimodal, Unsupervised Cluster Analysis of the SPARK Cohort<a class="headerlink" href="#the-stratification-of-autism-spectrum-disorder-using-multimodal-unsupervised-cluster-analysis-of-the-spark-cohort" title="Link to this heading">#</a></h1>
+<p>Tahmid Azam <a class="footnote-reference brackets" href="#ta" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, Chirag J. Patel <a class="footnote-reference brackets" href="#cjp" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>Autism Spectrum Disorder (ASD) is a highly heterogenous, neurodevelopmental condition with a diverse clinical presentation involving many genetic factors. However, the <em>Fifth Edition of the Diagnostic and Statistical Manual of Mental Disorders, Text Revision</em> (DSM-5-TR) consolidated several conditions into a single ASD diagnosis to improve diagnostic consistency. While previous studies have found evidence for subgroups within individual modalities, such as behavior or genetics, we hypothesize that integrating multiple modalities into cluster analysis will reveal meaningful, robust subgroups hidden within the DSM-5-TR ASD diagnosis. Stratifying ASD in this way could enable precise, individualized support strategies for autistic individuals in educational, home, and clinical environments.</p>
+<p>We propose a multi-modal, unsupervised cluster analysis to identify subgroups within the Simons Foundation Powering Autism Research for Knowledge (SPARK) cohort, the largest ASD-focused study that aggregates behavioral questionnaires, genetic samples, and environmental information from over 150,000 autistic individuals across the United States. We integrate questionnaire scores, genetic single nucleotide polymorphisms, and markers of socioeconomic status such as deprivation indices to form a multi-modal representation of each participant, clustering using k-means and Gaussian mixture models.</p>
+<p>As an initial step, we assessed predictability between behavioral instruments using supervised linear and non-linear models. Low peak cross-instrument predictability (<span class="math notranslate nohighlight">\(R2\)</span> = 0.38, 95% CI [0.37, 0.39]) supports mutual exclusivity between measured behavioral traits which motivates our proposed stratification technique.</p>
+<p>If our hypothesis is supported, the resulting strata would be strengthened by the statistical power of the SPARK cohort and the multi-modal nature of the analysis. These subgroups could help focus research on the mechanisms behind ASD onset and guide precision care, ensuring autistic individuals are neither overlooked nor overwhelmed, but truly understood.</p>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ta" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>University of Cambridge, United Kingdom</p>
+</aside>
+<aside class="footnote brackets" id="cjp" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Department of Biomedical Informatics, Harvard Medical School, United States</p>
+</aside>
+</aside>
+<section id="project-contents">
+<h2>Project contents<a class="headerlink" href="#project-contents" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Packages</a><ul>
@@ -298,12 +317,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lab_notes/cluster_analysis.html">Cluster analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lab_notes/cluster_analysis/initial_pheno.html">Initial phenotypic cluster analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lab_notes/cluster_analysis/paper_reproduction.html">Paper reproduction</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -335,6 +356,18 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-contents">Project contents</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
