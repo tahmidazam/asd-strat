@@ -1,0 +1,8 @@
+Laboratory notes
+================
+
+.. toctree::
+   :caption: Laboratory notes
+   :maxdepth: 2
+
+   regression

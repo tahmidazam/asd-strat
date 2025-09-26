@@ -1,0 +1,14 @@
+Phenotypic k-means
+==================
+
+We perform k-means clustering on the final scores of the following instruments:
+
+- Repetitive Behavior Scale - Revised (:attr:`~spark.inst.Inst.RBSR`)
+- Developmental Coordination Disorder Questionnaire (:attr:`~spark.inst.Inst.DCDQ`)
+- Child Behavior Checklist for ages 6 to 18 years (:attr:`~spark.inst.CBCL_6_18`)
+- Social Communication Questionnaire (:attr:`~spark.inst.Inst.SCQ`)
+
+These instruments are selected because they have a final score feature.
+
+
+
